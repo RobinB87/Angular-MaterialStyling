@@ -7,12 +7,19 @@ import { AppComponent } from './app.component';
 
 const routes: Route[] = [
   {
-    path: 'demo',
+    path: 'contactmanager',
     // lazy load module syntax:
+    loadChildren: () =>
+      import('./contactmanager/contactmanager.module').then(
+        (m) => m.ContactmanagerModule
+      ),
+  },
+  {
+    path: 'demo',
     loadChildren: () => import('./demo/demo.module').then((m) => m.DemoModule),
   },
-  // catch all route:
-  { path: '**', redirectTo: 'demo' },
+  // a catch all route:
+  { path: '**', redirectTo: 'contactmanager' },
 ];
 
 @NgModule({
