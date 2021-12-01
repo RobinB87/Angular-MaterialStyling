@@ -1,3 +1,25 @@
-<mat-card>
-  <h1>Main content</h1>
-</mat-card>
+<div *ngIf="!user">
+  <mat-spinner></mat-spinner>
+</div>
+
+<!-- if using ngIf else and ng-template, an exclamation is required after every use of user below -->
+<!-- that is quite annoying, hence, ngIf again -->
+<div *ngIf="user">
+  <mat-card>
+    <mat-card-header>
+      <mat-icon mat-card-avatar svgIcon="{{ user.avatar }}"></mat-icon>
+      <mat-card-title>
+        <h2>{{ user.name }}</h2>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Birthday {{ user.birthDate | date: "d LLLL" }}
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>
+        {{ user.bio }}
+      </p>
+    </mat-card-content>
+  </mat-card>
+</div>
