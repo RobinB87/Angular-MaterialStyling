@@ -42,11 +42,6 @@ export class SidenavComponent implements OnInit {
     this.users$ = this.userService.users;
     this.userService.loadAll();
 
-    this.users$.subscribe((data) => {
-      if (data.length > 0)
-        this.router.navigate(['/contactmanager', data[0].id]);
-    });
-
     this.router.events.subscribe(() => {
       if (this.isScreenSmall) {
         this.sideNav.close();

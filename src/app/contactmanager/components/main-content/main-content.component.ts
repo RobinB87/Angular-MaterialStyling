@@ -19,7 +19,11 @@ export class MainContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const id = params['id'];
+      let id = params['id'];
+      if (!id) id = 1;
+
+      // setting user to undefined just for developing, to show spinner
+      this.user = undefined;
 
       // userById does not get user when being on a user and then refresh the page
       // this is due to race condition, as sidenav component still did not have loaded the users
@@ -30,7 +34,10 @@ export class MainContentComponent implements OnInit {
       this.userService.users.subscribe((users) => {
         if (users.length == 0) return;
 
-        this.user = this.userService.userById(id);
+        // time out just for developing purposes
+        setTimeout(() => {
+          this.user = this.userService.userById(id);
+        }, 500);
       });
     });
   }
