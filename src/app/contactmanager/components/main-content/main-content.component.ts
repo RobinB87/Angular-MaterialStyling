@@ -21,7 +21,17 @@ export class MainContentComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const id = params['id'];
 
-      this.user = this.userService.userById(id);
+      // userById does not get user when being on a user and then refresh the page
+      // this is due to race condition, as sidenav component still did not have loaded the users
+      // and the maincontent component that is trying to fetch the user
+      //
+      // since the userservice already exposes the users as an observable
+      // take advantage of that by subscribing here as well
+      this.userService.users.subscribe((users) => {
+        if (users.length == 0) return;
+
+        this.user = this.userService.userById(id);
+      });
     });
   }
 }
