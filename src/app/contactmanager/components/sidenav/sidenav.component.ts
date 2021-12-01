@@ -1,7 +1,9 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { User } from '../../models/user';
 import { UserService } from './../../services/user.service';
 
@@ -23,6 +25,10 @@ export class SidenavComponent implements OnInit {
     private router: Router
   ) {}
 
+  // reference to our sidenav which is in the html template file
+  // this reference is shown as #sideNav
+  @ViewChild(MatSidenav) sideNav!: MatSidenav;
+
   ngOnInit(): void {
     // observe changes when the viewport resizes
     this.breakpointObserver
@@ -39,6 +45,12 @@ export class SidenavComponent implements OnInit {
     this.users$.subscribe((data) => {
       if (data.length > 0)
         this.router.navigate(['/contactmanager', data[0].id]);
+    });
+
+    this.router.events.subscribe(() => {
+      if (this.isScreenSmall) {
+        this.sideNav.close();
+      }
     });
   }
 }
