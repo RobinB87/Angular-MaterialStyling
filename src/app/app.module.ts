@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Route, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { MaterialModule } from './shared/material.module';
+
+const routes: Route[] = [
+  {
+    path: 'demo',
+    // lazy load module syntax:
+    loadChildren: () => import('./demo/demo.module').then((m) => m.DemoModule),
+  },
+  // catch all route:
+  { path: '**', redirectTo: 'demo' },
+];
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    FormsModule,
+    RouterModule.forRoot(routes),
   ],
   providers: [],
   bootstrap: [AppComponent],
