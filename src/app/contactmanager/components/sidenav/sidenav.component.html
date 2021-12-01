@@ -2,8 +2,8 @@
   <mat-sidenav
     #sidenav
     class="app-sidenav mat-elevation-z10"
-    opened="true"
-    mode="side"
+    [opened]="!isScreenSmall"
+    [mode]="isScreenSmall ? 'over' : 'side'"
   >
     <mat-toolbar color="primary">
       <span>Contacts</span>
@@ -16,8 +16,9 @@
   </mat-sidenav>
 
   <mat-sidenav-content class="app-sidenav-content">
-    <app-toolbar></app-toolbar>
-    <router-outlet></router-outlet>
-    <button mat-button (click)="sidenav.toggle()">Open</button>
+    <app-toolbar (toggleSideNav)="sidenav.toggle()"></app-toolbar>
+    <div class="wrapper">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
