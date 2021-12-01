@@ -1,0 +1,32 @@
+.flex-container {
+  display: flex;
+
+  // allow items to wrap
+  // this equals flex-direction: row; flex-wrap: wrap
+  flex-flow: row wrap;
+
+  // distribute remaining space
+  justify-content: space-around;
+}
+
+// change flexbox attributes defined with media queries
+// if the screen is smaller than 800px
+@media all and (max-width: 800px) {
+  .flex-container {
+    justify-content: flex-start;
+  }
+}
+
+.flex-item {
+  width: 200px;
+  height: 150px;
+
+  background: tomato;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+
+  // center text vertically by defining line height equal to the height of the actual flex item
+  line-height: 150px;
+}
