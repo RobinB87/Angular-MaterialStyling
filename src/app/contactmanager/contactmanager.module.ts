@@ -11,6 +11,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { UserService } from './services/user.service';
+import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Route[] = [
   {
@@ -30,6 +31,7 @@ const routes: Route[] = [
     ToolbarComponent,
     MainContentComponent,
     SidenavComponent,
+    NotesComponent,
   ],
   imports: [
     CommonModule,
