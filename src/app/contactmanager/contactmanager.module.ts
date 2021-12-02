@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '../shared/material.module';
@@ -41,6 +41,7 @@ const routes: Route[] = [
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
   providers: [UserService],
