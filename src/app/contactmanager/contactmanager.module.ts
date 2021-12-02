@@ -12,6 +12,7 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { UserService } from './services/user.service';
 import { NotesComponent } from './components/notes/notes.component';
+import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
 
 const routes: Route[] = [
   {
@@ -32,6 +33,7 @@ const routes: Route[] = [
     MainContentComponent,
     SidenavComponent,
     NotesComponent,
+    NewContactDialogComponent,
   ],
   imports: [
     CommonModule,
