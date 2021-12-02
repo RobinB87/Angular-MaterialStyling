@@ -16,7 +16,7 @@ const SMALL_WIDTH_BREAKPOINT = 720;
 })
 export class SidenavComponent implements OnInit {
   isScreenSmall!: boolean;
-
+  isDarkTheme: boolean = false;
   users$!: Observable<User[]>;
 
   constructor(
@@ -47,5 +47,9 @@ export class SidenavComponent implements OnInit {
         this.sideNav.close();
       }
     });
+  }
+
+  toggleTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
   }
 }
