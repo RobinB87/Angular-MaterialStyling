@@ -1,6 +1,7 @@
 <mat-sidenav-container
   class="app-sidenav-container"
   [class.dark-theme]="isDarkTheme"
+  [dir]="direction"
 >
   <mat-sidenav
     #sideNav
@@ -26,6 +27,7 @@
     <app-toolbar
       (toggleSideNav)="sideNav.toggle()"
       (toggleTheme)="toggleTheme()"
+      (toggleDirection)="toggleDirection()"
     ></app-toolbar>
     <div class="wrapper">
       <router-outlet></router-outlet>
